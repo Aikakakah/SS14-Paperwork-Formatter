@@ -60,17 +60,36 @@ function parseBBCode(text) {
     let parsedText = text;
 
     // Newlines
+    //parsedText = parsedText.replace(/\n/g, '<br>');
+    //parsedText = parsedText.replace(/\[\/heading]<br>/g, '[/heading]');
+
+    // Bold
+    parsedText = parsedText.replace(/\[bold](.*?)\[\/bold]/gis, '<strong>$1</strong>');
+
+    // Italic
+    parsedText = parsedText.replace(/\[italic](.*?)\[\/italic]/gis, '<em>$1</em>');
+
+    // Bolditalic
+    parsedText = parsedText.replace(/\[bolditalic](.*?)\[\/bolditalic]/gis, '<b><em>$1</em></b>');
+
+    // Bullet
     parsedText = parsedText.replace(/\n/g, '<br>');
     parsedText = parsedText.replace(/\[\/heading]<br>/g, '[/heading]');
 
-    // Bold
-    parsedText = parsedText.replace(/\[b](.*?)\[\/b]/gis, '<strong>$1</strong>');
+    // Headers
+    parsedText = parsedText.replace(/\[head=1](.*?)\[\/head]/gis, '<font size="14">$1</font>');
+    parsedText = parsedText.replace(/\[head=2](.*?)\[\/head]/gis, '<font size="12">$1</font>');
+    parsedText = parsedText.replace(/\[head=3](.*?)\[\/head]/gis, '<font size="10">$1</font>');
+    
+    
+    //parsedText = parsedText.replace(/\[size=(.*?)](.*?)\[\/size]/gis, function(match, p1, p2) {
+        //return '<span style="font-size:' + p1 + '%;">' + p2 + '</span>';
+    //});
 
-    // Italic
-    parsedText = parsedText.replace(/\[i](.*?)\[\/i]/gis, '<em>$1</em>');
-
+    
+    
     // Underline
-    parsedText = parsedText.replace(/\[u](.*?)\[\/u]/gis, '<u>$1</u>');
+    //parsedText = parsedText.replace(/\[u](.*?)\[\/u]/gis, '<u>$1</u>');
 
     // Strikethrough
     parsedText = parsedText.replace(/\[s](.*?)\[\/s]/gis, '<s>$1</s>');
