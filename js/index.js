@@ -86,7 +86,8 @@ function parseBBCode(text) {
         return '<span style="font-size:' + p1 + '%;">' + p2 + '</span>';
     });
 
-    
+    // Bullet
+    parsedText = parsedText.replace(/\[\/bullet](.*?)/gis, '<ul><li>$1</li></ul>');
     
     // Underline
     //parsedText = parsedText.replace(/\[u](.*?)\[\/u]/gis, '<u>$1</u>');
