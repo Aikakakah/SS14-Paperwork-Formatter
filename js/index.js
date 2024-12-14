@@ -73,8 +73,8 @@ function parseBBCode(text) {
     parsedText = parsedText.replace(/\[bolditalic](.*?)\[\/bolditalic]/gis, '<b><em>$1</em></b>');
 
     // Bullet
-    parsedText = parsedText.replace(/\n/g, '<br>');
-    parsedText = parsedText.replace(/\[\/heading]<br>/g, '[/heading]');
+    //parsedText = parsedText.replace(/\n/g, '<br>');
+    //parsedText = parsedText.replace(/\[\/heading]<br>/g, '[/heading]');
 
     // Headers
     //parsedText = parsedText.replace(/\[head=1](.*?)\[\/head]/gis, '<span style="font-size:14%;>$1</span>');
@@ -90,7 +90,7 @@ function parseBBCode(text) {
     });
 
     // Bullet
-    parsedText = parsedText.replace(/\[\/bullet](.*?)/gis, '<ul>$1</ul>');
+    parsedText = parsedText.replace(/\[\/bullet](.*?)/gis, '<ul><li>$1</li></ul>');
 
     //bullet1
     //parsedText = parsedText.replace(/\[bullet1](.*?)\[\/bullet1]/gis, '<ul><li>$1</li></ul>');
