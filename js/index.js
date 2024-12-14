@@ -77,14 +77,14 @@ function parseBBCode(text) {
     parsedText = parsedText.replace(/\[\/heading]<br>/g, '[/heading]');
 
     // Headers
-    parsedText = parsedText.replace(/\[head=1](.*?)\[\/head]/gis, '<font size="14">$1</font>');
+    parsedText = parsedText.replace(/\[head=1](.*?)\[\/head]/gis, '<span style="font-size:14%;>$1</span>');
     parsedText = parsedText.replace(/\[head=2](.*?)\[\/head]/gis, '<font size="12">$1</font>');
     parsedText = parsedText.replace(/\[head=3](.*?)\[\/head]/gis, '<font size="10">$1</font>');
     
-    
-    //parsedText = parsedText.replace(/\[size=(.*?)](.*?)\[\/size]/gis, function(match, p1, p2) {
-        //return '<span style="font-size:' + p1 + '%;">' + p2 + '</span>';
-    //});
+    // Size
+    parsedText = parsedText.replace(/\[size=(.*?)](.*?)\[\/size]/gis, function(match, p1, p2) {
+        return '<span style="font-size:' + p1 + '%;">' + p2 + '</span>';
+    });
 
     
     
