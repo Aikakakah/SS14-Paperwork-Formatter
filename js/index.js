@@ -89,8 +89,11 @@ function parseBBCode(text) {
         return '<span style="font-size:' + p1 + '%;">' + p2 + '</span>';
     });
 
-    // Bullet
-    parsedText = parsedText.replace(/\[\/bullet](.*?)/gis, '<ul><li>$1</li></ul>');
+    // Bullet•
+    parsedText = parsedText.replace(/\[\/bullet](.*?)/gis, '<ul>$1</li>');
+    parsedText = parsedText.replace(/\[\/bullet1](.*?\/n)/gis, '"•"$1');
+    parsedText = parsedText.replace(/\[\/bullet2](.*?\/n)/gis, '• $1');
+    
 
     //bullet1
     //parsedText = parsedText.replace(/\[bullet1](.*?)\[\/bullet1]/gis, '<ul><li>$1</li></ul>');
@@ -101,9 +104,11 @@ function parseBBCode(text) {
     //parsedText = parsedText.replace(/\[\*](.*?)(?=\[\*]|<\/ul>)/gis, '<li>$1</li>');
 
     // Heading (v1)
-    parsedText = parsedText.replace(/\[head=1](.*?)\[\/head]/gis, '<h1>$1</h1>');
-    parsedText = parsedText.replace(/\[head=2](.*?)\[\/head]/gis, '<h2>$1</h2>');
-    parsedText = parsedText.replace(/\[head=3](.*?)\[\/head]/gis, '<h3>$1</h3>');
+    parsedText = parsedText.replace(/\[head=1](.*?)\[\/head]/gis, '<span style="font-size:2em;font-weight:bold">$1</span>');
+    parsedText = parsedText.replace(/\[head=2](.*?)\[\/head]/gis, '<span style="font-size:1.5em;font-weight:bold">$1</span>');
+    parsedText = parsedText.replace(/\[head=3](.*?)\[\/head]/gis, '<span style="font-size:1.17em;font-weight:bold">$1</span>');
+
+
     
     // Underline
     //parsedText = parsedText.replace(/\[u](.*?)\[\/u]/gis, '<u>$1</u>');
