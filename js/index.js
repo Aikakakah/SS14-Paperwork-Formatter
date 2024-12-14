@@ -78,11 +78,11 @@ function parseBBCode(text) {
 
     // Headers
     //parsedText = parsedText.replace(/\[head=1](.*?)\[\/head]/gis, '<span style="font-size:14%;>$1</span>');
-    parsedText = parsedText.replace(/\[head=1](.*?)\[\/head]/gis, '<span style="font-size:200;"><h2>$1</h2></span>');
-    parsedText = parsedText.replace(/\[head=2](.*?)\[\/head]/gis, '<span style="font-size:150%;"><h2>$1</h2></span>');
+    //parsedText = parsedText.replace(/\[head=1](.*?)\[\/head]/gis, '<span style="font-size:200;"><h2>$1</h2></span>');
+    //parsedText = parsedText.replace(/\[head=2](.*?)\[\/head]/gis, '<span style="font-size:150%;"><h2>$1</h2></span>');
     
     //parsedText = parsedText.replace(/\[head=2](.*?)\[\/head]/gis, '<font size="12">$1</font>');
-    parsedText = parsedText.replace(/\[head=3](.*?)\[\/head]/gis, '<font size="10">$1</font>');
+    //parsedText = parsedText.replace(/\[head=3](.*?)\[\/head]/gis, '<font size="10">$1</font>');
     
     // Size
     parsedText = parsedText.replace(/\[size=(.*?)](.*?)\[\/size]/gis, function(match, p1, p2) {
@@ -90,18 +90,20 @@ function parseBBCode(text) {
     });
 
     // Bullet
-    parsedText = parsedText.replace(/\[\/bullet](.*?)/gis, '<ul><li>$1</li></ul>');
+    parsedText = parsedText.replace(/\[\/bullet](.*?)/gis, '<ul>$1</ul>');
 
     //bullet1
-    parsedText = parsedText.replace(/\[bullet1](.*?)\[\/bullet1]/gis, '<ul><li>$1</li></ul>');
+    //parsedText = parsedText.replace(/\[bullet1](.*?)\[\/bullet1]/gis, '<ul><li>$1</li></ul>');
     //parsedText = parsedText.replace(/\[\*](.*?)(?=\[\*]|<\/ul>)/gis, '<li>$1</li>');
 
     //bullet 2
-    parsedText = parsedText.replace(/\[bullet2](.*?)\[\/bullet2]/gis, '<ul>$1</ul>');
-    parsedText = parsedText.replace(/\[\*](.*?)(?=\[\*]|<\/ul>)/gis, '<li>$1</li>');
+    //parsedText = parsedText.replace(/\[bullet2](.*?)\[\/bullet2]/gis, '<ul>$1</ul>');
+    //parsedText = parsedText.replace(/\[\*](.*?)(?=\[\*]|<\/ul>)/gis, '<li>$1</li>');
 
     // Heading (v1)
-    parsedText = parsedText.replace(/\[head=3](.*?)\[\/head]/gis, '<h3>$1</h2>');
+    parsedText = parsedText.replace(/\[head=1](.*?)\[\/head]/gis, '<h1>$1</h1>');
+    parsedText = parsedText.replace(/\[head=2](.*?)\[\/head]/gis, '<h2>$1</h2>');
+    parsedText = parsedText.replace(/\[head=3](.*?)\[\/head]/gis, '<h3>$1</h3>');
     
     // Underline
     //parsedText = parsedText.replace(/\[u](.*?)\[\/u]/gis, '<u>$1</u>');
