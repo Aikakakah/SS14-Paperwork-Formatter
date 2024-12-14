@@ -91,8 +91,8 @@ function parseBBCode(text) {
 
     // Bullet•
     parsedText = parsedText.replace(/\[\/bullet](.*?)/gis, '<ul>$1</li>');
-    parsedText = parsedText.replace(/\[\/bullet1](.*?\/n)/gis, '"•"$1');
-    parsedText = parsedText.replace(/\[\/bullet2](.*?\/n)/gis, '• $1');
+    parsedText = parsedText.replace(/\[\/bullet1](.*?)\/n/gis, '•$1');
+    parsedText = parsedText.replace(/\[\/bullet2](.*?)/gis, '• $1');
     
 
     //bullet1
