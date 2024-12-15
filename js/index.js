@@ -83,9 +83,7 @@ function parseBBCode(text) {
     });
 
     // Bullet
-    //parsedText = parsedText.replace(/\[\/bullet](.*?)/gis, '• $1');
-    //parsedText = parsedText.replace(/\[\/bullet1](.*?)\/n/gis, '• $1');
-    //parsedText = parsedText.replace(/\[\/bullet2](.*?\/n)/gis, '• $1');
+    parsedText = parsedText.replace(/\[\/bullet](.*?)<br>/gis, '• $1');
 
     // Color
     parsedText = parsedText.replace(/\[color=(.*?)](.*?)\[\/color]/gis, '<span style="color:$1;">$2</span>');
