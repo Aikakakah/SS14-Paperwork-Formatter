@@ -72,10 +72,6 @@ function parseBBCode(text) {
     // Bolditalic
     parsedText = parsedText.replace(/\[bolditalic](.*?)\[\/bolditalic]/gis, '<b><em>$1</em></b>');
 
-    // Bullet
-    //parsedText = parsedText.replace(/\n/g, '<br>');
-    //parsedText = parsedText.replace(/\[\/heading]<br>/g, '[/heading]');
-
     // Headers
     parsedText = parsedText.replace(/\[head=1](.*?)\[\/head]/gis, '<span style="font-size:2em;font-weight:bold">$1</span>');
     parsedText = parsedText.replace(/\[head=2](.*?)\[\/head]/gis, '<span style="font-size:1.5em;font-weight:bold">$1</span>');
@@ -86,88 +82,16 @@ function parseBBCode(text) {
         return '<span style="font-size:' + p1 + '%;">' + p2 + '</span>';
     });
 
-    // Bullet•
-    //parsedText = parsedText.replace(/\[\/bullet](.*?)/gis, '<ul>$1</li>');
-    parsedText = parsedText.replace(/\[\/bullet1](.*?)\/n/gis, '•$1');
-    //parsedText = parsedText.replace(/\[\/bullet2](.*?)/gis, '• $1');
-    
+    // Bullet
+    parsedText = parsedText.replace(/\[\/bullet1](.*?)/gis, '• $1');
 
-    //bullet1
-    //parsedText = parsedText.replace(/\[bullet1](.*?)\[\/bullet1]/gis, '<ul><li>$1</li></ul>');
-    //parsedText = parsedText.replace(/\[\*](.*?)(?=\[\*]|<\/ul>)/gis, '<li>$1</li>');
-
-    //bullet 2
-    //parsedText = parsedText.replace(/\[bullet2](.*?)\[\/bullet2]/gis, '<ul>$1</ul>');
-    //parsedText = parsedText.replace(/\[\*](.*?)(?=\[\*]|<\/ul>)/gis, '<li>$1</li>');
-
-
-
-
-    
-    // Underline
-    //parsedText = parsedText.replace(/\[u](.*?)\[\/u]/gis, '<u>$1</u>');
-
-    // Strikethrough
-    parsedText = parsedText.replace(/\[s](.*?)\[\/s]/gis, '<s>$1</s>');
-
-    // Colour
+    // Color
     parsedText = parsedText.replace(/\[color=(.*?)](.*?)\[\/color]/gis, '<span style="color:$1;">$2</span>');
 
     // Font size
     parsedText = parsedText.replace(/\[size=(.*?)](.*?)\[\/size]/gis, function(match, p1, p2) {
         return '<span style="font-size:' + p1 + '%;">' + p2 + '</span>';
     });
-
-    // Spoiler
-    parsedText = parsedText.replace(/\[spoiler](.*?)\[\/spoiler]/gis, '<span class="spoiler">$1</span>');
-
-    // Box
-    parsedText = parseBoxes(parsedText);
-
-    // Spoilerbox
-
-    // Quote
-    parsedText = parsedText.replace(/\[quote](.*?)\[\/quote]/gis, '<blockquote>$1</blockquote>');
-    parsedText = parsedText.replace(/\[quote=(.*?)](.*?)\[\/quote]/gis, '<blockquote><strong>$1 wrote:</strong><br>$2</blockquote>');
-
-    // Inline code
-    parsedText = parsedText.replace(/\[code](.*?)\[\/code]/gis, '<pre>$1</pre>');
-
-    // Code block
-
-    // Centre
-    parsedText = parsedText.replace(/\[centre](.*?)\[\/centre]/gis, function(match, p1) {
-        return '<div style="text-align: center;">' + p1 + '</div>';
-    });
-
-    // URL
-    parsedText = parsedText.replace(/\[url](.*?)\[\/url]/gis, '<a href="$1" target="_blank">$1</a>');
-    parsedText = parsedText.replace(/\[url=(.*?)](.*?)\[\/url]/gis, '<a href="$1" target="_blank">$2</a>');
-
-    // Profile
-    parsedText = parsedText.replace(/\[profile=(.*?)](.*?)\[\/profile]/gis, '<strong><a href="https://osu.ppy.sh/users/$1" target="_blank">$2</a></strong>');
-
-    // Formatted lists
-    parsedText = parsedText.replace(/\[list](.*?)\[\/list]/gis, '<ul>$1</ul>');
-    parsedText = parsedText.replace(/\[\*](.*?)(?=\[\*]|<\/ul>)/gis, '<li>$1</li>');
-
-    // Email
-
-    // Images
-    parsedText = parsedText.replace(/\[img](.*?)\[\/img]/gis, '<img src="$1" alt="Image">');
-
-    // Imagemap
-
-    // YouTube
-
-    // Audio
-
-    // Heading (v1)
-    parsedText = parsedText.replace(/\[heading](.*?)\[\/heading]/gis, '<span style="color:#e0b8ca;"><h2>$1</h2></span>');
-
-    // Notice
-    parsedText = parsedText.replace(/\[notice](.*?)\[\/notice]/gis, '<div class="notice">$1</div>');
-    parsedText = parsedText.replace(/(<\/div>\s*)<br>/g, '</div>');
 
     return parsedText;
 }
