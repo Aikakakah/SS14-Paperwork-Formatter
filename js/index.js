@@ -17,12 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    window.changeFontSize = function() {
-    const selectElement = document.getElementById('size-select-select');
+    window.changeHeaderLevel = function() {
+    const selectElement = document.getElementById('header-select-select');
     const selectedValue = selectElement.value;
 
         if (selectedValue) {
-            insertTag("size=" + selectedValue);
+            insertTag("head=" + selectedValue);
             // Reset the dropdown to the hidden option
             selectElement.selectedIndex = 0;
         }
