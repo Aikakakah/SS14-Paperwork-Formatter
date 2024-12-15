@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
     background-color: #1c1719;
     padding: 50px;
 }
@@ -32,7 +32,7 @@ h1 {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: #382e32;
+    background-color: #d8cccc;
     overflow-y: auto;
     color: #ffffff;
     font-size: 14px;
