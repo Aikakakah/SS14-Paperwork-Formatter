@@ -42,6 +42,7 @@ h1 {
 #bbcode-input {
     font-family: monospace;
     resize: vertical;
+    color: #5d5a56;
 }
 
 #bbcode-preview {
