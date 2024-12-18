@@ -1,55 +1,85 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const bbcodeInput = document.getElementById('bbcode-input');
-    const bbcodePreview = document.getElementById('bbcode-preview');
-    const errorMessageElement = document.getElementById('error-message');
-    const toolbarButtons = document.querySelectorAll('.toolbar button');
+  const bbcodeInput = document.getElementById('bbcode-input');
+  const bbcodePreview = document.getElementById('bbcode-preview');
+  const errorMessageElement = document.getElementById('error-message');
+  const toolbarButtons = document.querySelectorAll('.toolbar button');
+  bbcodePreview.innerHTML = parseBBCode(bbcodeInput.value);
+
+  bbcodeInput.addEventListener('input', () => {
+    errorMessageElement.textContent = "";
     bbcodePreview.innerHTML = parseBBCode(bbcodeInput.value);
+  });
 
-    bbcodeInput.addEventListener('input', () => {
-        errorMessageElement.textContent = "";
-        bbcodePreview.innerHTML = parseBBCode(bbcodeInput.value);
+  toolbarButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const tag = button.getAttribute('data-tag');
+      insertTag(tag);
     });
+  });
 
-    toolbarButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const tag = button.getAttribute('data-tag');
-            insertTag(tag);
-        });
-    });
-
-    window.changeHeaderLevel = function() {
+  window.changeHeaderLevel = function() {
     const selectElement = document.getElementById('header-select-select');
     const selectedValue = selectElement.value;
 
-        if (selectedValue) {
-            insertTag("head=" + selectedValue);
-            // Reset the dropdown to the hidden option
-            selectElement.selectedIndex = 0;
-        }
+    if (selectedValue) {
+      insertTag("head=" + selectedValue);
+      // Reset the dropdown to the hidden option
+      selectElement.selectedIndex = 0;
+    }
+  }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.ctrlKey) {
+      if (event.key === 'i') {
+        // Handle italicization using BBCode
+        const selectionStart = bbcodeInput.selectionStart;
+        const selectionEnd = bbcodeInput.selectionEnd;
+        insertTag('italic', selectionStart, selectionEnd);
+      } else if (event.key === 'b') {
+        // Handle bold using BBCode
+        const selectionStart = bbcodeInput.selectionStart;
+        const selectionEnd = bbcodeInput.selectionEnd;
+        insertTag('bold', selectionStart, selectionEnd);
+      } else if (event.key === 'u') {
+        // Handle bolditalic using BBCode
+        const selectionStart = bbcodeInput.selectionStart;
+        const selectionEnd = bbcodeInput.selectionEnd;
+        insertTag('bolditalic', selectionStart, selectionEnd);
+      }
+    }
+    // Prevent default browser behavior for Ctrl+I, Ctrl+B, Ctrl+U
+    if (event.ctrlKey && (event.key === 'i' || event.key === 'b' || event.key === 'u')) {
+      event.preventDefault(); 
+    }
+  });
+
+  function insertTag(tag, selectionStart = null, selectionEnd = null) {
+    console.log(tag);
+    const startTag = `[${tag}]`;
+    let strippedTag = tag.replace(/[^\a-zA-Z]/g, '');
+    const endTag = `[/${strippedTag}]`;
+
+    if (selectionStart === null || selectionEnd === null) {
+      // Get current selection if not provided
+      selectionStart = bbcodeInput.selectionStart;
+      selectionEnd = bbcodeInput.selectionEnd;
     }
 
-    function insertTag(tag) {
-        console.log(tag);
-        const startTag = `[${tag}]`;
-        let strippedTag = tag.replace(/[^\a-zA-Z]/g, '');
-        const endTag = `[/${strippedTag}]`;
-        const { selectionStart, selectionEnd, value } = bbcodeInput;
-        const selectedText = value.substring(selectionStart, selectionEnd);
+    const selectedText = bbcodeInput.value.substring(selectionStart, selectionEnd);
 
-        // Set caret position to directly after = sign if there is one, set to inside the tags otherwise
-        let caretPosition;
-        if (tag.length === strippedTag.length + 1) {
-            caretPosition = selectionStart + startTag.length - 1;
-        } else {
-            caretPosition = selectionStart + startTag.length;
-        }
-        const newText = startTag + selectedText + endTag;
-
-        bbcodeInput.setRangeText(newText, selectionStart, selectionEnd, 'end');
-        bbcodeInput.focus();
-        bbcodeInput.setSelectionRange(caretPosition, caretPosition);
+    // Set caret position to directly after = sign if there is one, set to inside the tags otherwise
+    let caretPosition;
+    if (tag.length === strippedTag.length + 1) {
+      caretPosition = selectionStart + startTag.length - 1;
+    } else {
+      caretPosition = selectionStart + startTag.length;
     }
-});
+    const newText = startTag + selectedText + endTag;
+
+    bbcodeInput.setRangeText(newText, selectionStart, selectionEnd, 'end');
+    bbcodeInput.focus();
+    bbcodeInput.setSelectionRange(caretPosition, caretPosition);
+  }
 
 /**
  * Tags taken in order from https://osu.ppy.sh/wiki/en/BBCode
