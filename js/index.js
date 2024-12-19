@@ -17,6 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    document.addEventListener('keydown', (event) => {
+        if (event.ctrlKey && event.key.toLowerCase() === 'i') {
+            event.preventDefault(); // Prevent default browser behavior
+            insertTag('italic');
+        }
+    });
+
     window.changeHeaderLevel = function() {
     const selectElement = document.getElementById('header-select-select');
     const selectedValue = selectElement.value;
