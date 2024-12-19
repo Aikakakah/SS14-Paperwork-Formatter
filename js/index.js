@@ -17,6 +17,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    document.addEventListener('keydown', (event) => {
+        if (event.ctrlKey && event.key.toLowerCase() === 'i') {
+            event.preventDefault(); // Prevent default browser behavior
+            insertTag('italic');
+        }
+        if (event.ctrlKey && event.key.toLowerCase() === 'b') {
+            event.preventDefault(); // Prevent default browser behavior
+            insertTag('bold');
+        }
+        if (event.ctrlKey && event.key.toLowerCase() === 'u') {
+            event.preventDefault(); // Prevent default browser behavior
+            insertTag('bolditalic');
+        }
+    });
+
     window.changeHeaderLevel = function() {
     const selectElement = document.getElementById('header-select-select');
     const selectedValue = selectElement.value;
