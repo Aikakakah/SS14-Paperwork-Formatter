@@ -113,17 +113,17 @@ footer {
     filter: drop-shadow(0 0 0.5rem black);
 }
 
-.font-size select{
+/* .font-size select{
     background-color: #ae13f1;
     border-radius: 90px;
     border: 0px solid #000;
     padding: 5px 10px;
     color: #fff;
 }
-/*#54454d*/
+#54454d */
 
 .header-select {
-    background-color: #6f0ad3;
+    background-color: #472121;
     color: #fff;
     font-size: 13px;
     padding: 5px 10px;
