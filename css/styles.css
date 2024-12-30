@@ -37,7 +37,7 @@ h1 {
     border-radius: 4px;
     background-color: #d8cccc;/*Text field colors*/
     overflow-y: auto;
-    color: #4fe89e;
+    color: #e8524f;/*Preview field text color*/
     font-size: 14px;
 }
 /*#d8cccc #5d5a56*/
@@ -70,7 +70,7 @@ pre {
 /*#5d5a56*/
 
 a {
-    color: #25dd14;/*Source code?*/
+    color: #4314dd;/*Source code?*/
     text-decoration: none;
 }
 /*#d9a6bd*/
@@ -103,28 +103,28 @@ img {
 } */
 /*#5d5a56*/
 
-.box {
+/* .box {
     color: #810885;
     text-decoration: none;
     cursor: pointer;
 }
 /*d9a6bd*/
 
-.box:hover {
+/* .box:hover {
     text-decoration: underline;
-}
+}  */
 
-.arrow {
+/* .arrow {
     margin-right: 5px;
     display: inline-block;
-    color: red;/*white initially*/
+    color: red;/*white initially
     width: 20px;
-}
+} */
 
-.box-content {
+/* .box-content {
     padding-top: 10px;
     display: none;
-}
+} */
 
 /* .notice {
     background-color: #472121;
