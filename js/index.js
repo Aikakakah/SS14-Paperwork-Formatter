@@ -60,7 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.style.backgroundColor="#c44000";
             }
             if (selectedValue == "office-paper") {
-                document.body.style.backgroundColor = "#8a2929";
+                document.body.style.backgroundImage= url("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Iglesia_de_Nuestra_Se%C3%B1ora_de_La_Blanca%2C_Cardej%C3%B3n%2C_Espa%C3%B1a%2C_2012-09-01%2C_DD_02.JPG/640px-Iglesia_de_Nuestra_Se%C3%B1ora_de_La_Blanca%2C_Cardej%C3%B3n%2C_Espa%C3%B1a%2C_2012-09-01%2C_DD_02.JPG");
+                document.body.style.backgroundColor="#13c0eb";
             }
             if (selectedValue == "captains-thoughts") {
                 document.body.style.backgroundColor="#c44000";
