@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    window.changeHeaderLevel = function() {
+    window.changeHeaderSize = function() {
     const selectElement = document.getElementById('header-select-select');
     const selectedValue = selectElement.value;
 

@@ -20,10 +20,10 @@
         <button data-tag="color="><i class="fa-solid fa-palette"></i></button>
         <button data-tag="bullet="><i class="fa-solid fa-list"></i></button>
         <br>
-        <label class="header-select" data-orig-title="Header Size">
+        <label class="header-select" data-orig-title="Headers">
             <span>Header Size</span>
             <i class="fa-solid fa-chevron-down"></i>
-            <select id="header-select-select" onchange="changeHeaderLevel()">
+            <select id="header-select-select" onchange="changeHeaderSize()">
                 <option hidden>Hidden option</option>
                 <option value="1">Small</option>
                 <option value="2">Normal</option>
@@ -31,6 +31,7 @@
             </select>
         </label>
     </div>
+
     <div class="editor-container">
         <textarea id="bbcode-input" placeholder="Enter formatted text here..."></textarea>
         <div id="bbcode-preview"></div>
