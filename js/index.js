@@ -53,10 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (selectedValue == "orange") {
                 document.body.style.backgroundColor="#c44000";
             }
-            if (selectedValue == "paper") {
-                document.body.style.backgroundColor = "#8a2929";
-            }
             if (selectedValue == "book") {
+                document.body.style.backgroundImage= url("https://github.com/Aikakakah/Aikakakah.github.io/blob/main/PageBackgrounds/book.png?raw=true");
+            }
+            if (selectedValue == "paper") {
                 document.body.style.backgroundColor="#c44000";
             }
             if (selectedValue == "office-paper") {
