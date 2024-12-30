@@ -12,7 +12,7 @@
 <body>
 <div class="container">
     <h1>Space Station 14 Text Editor</h1>
-    <div id="error-message" style="color: red; font-weight: bold; text-align: center; padding-bottom: 20px;"></div>
+    <div id="error-message" style="color: red; font-weight: bold; text-align: center; padding-bottom: 10px;"></div>
     <div class="toolbar">
         <button data-tag="bold"><strong><i class="fa-solid fa-bold"></i></strong></button>
         <button data-tag="italic"><em><i class="fa-solid fa-italic"></i></em></button>
@@ -30,7 +30,23 @@
             </select>
         </label>
 
-
+        <label class="background-select" data-orig-title="Backgrounds">
+            <span>Background Color</span>
+            <i class="fa-solid fa-chevron-down"></i>
+            <select id="background-select-select" onchange="changeBackgroundColor()">
+                <option hidden>Hidden option</option>
+                <option value="default">Default</option>
+                <option value="orange">Orange</option>
+                <option value="paper">Paper</option>
+                <option value="book">Book</option>
+                <option value="office-paper">Office Paper</option>
+                <option value="captains-thoughts">Captain's Thoughts</option>
+                <option value="cargo-invoice">Cargo Invoice</option>
+                <option value="cargo-bounty">Cargo Bounty</option>
+                <option value="character-sheet">Character Sheet</option>
+            </select>
+        </label>
+    </div>
 
     <div class="editor-container">
         <textarea id="bbcode-input" placeholder="Enter formatted text here..."></textarea>

@@ -43,6 +43,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    window.changeBackgroundColor = function() {
+        const selectElement = document.getElementById('background-select-select');
+        const selectedValue = selectElement.value;
+    
+            if (selectedValue == "default") {
+                document.body.style.backgroundColor = "#8a2929";
+            }
+            if (selectedValue == "orange") {
+                document.body.style.backgroundColor="#c44000";
+            }
+            if (selectedValue == "paper") {
+                document.body.style.backgroundColor = "#8a2929";
+            }
+            if (selectedValue == "book") {
+                document.body.style.backgroundColor="#c44000";
+            }
+            if (selectedValue == "office-paper") {
+                document.body.style.backgroundColor = "#8a2929";
+            }
+            if (selectedValue == "captains-thoughts") {
+                document.body.style.backgroundColor="#c44000";
+            }
+            if (selectedValue == "cargo-invoice") {
+                document.body.style.backgroundColor="#c44000";
+            }
+            if (selectedValue == "cargo-bounty") {
+                document.body.style.backgroundColor = "#8a2929";
+            }
+            if (selectedValue == "character-sheet") {
+                document.body.style.backgroundColor="#c44000";
+            }
+        }
+
     function insertTag(tag) {
         console.log(tag);
         const startTag = `[${tag}]`;
