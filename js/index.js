@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const bbcodeInput = document.getElementById('bbcode-input');
-    const bbcodePreview = document.getElementById('bbcode-preview');
+    const textInput = document.getElementById('text-input');
+    const textPreview = document.getElementById('text-preview');
     const errorMessageElement = document.getElementById('error-message');
     const toolbarButtons = document.querySelectorAll('.toolbar button');
-    bbcodePreview.innerHTML = parseBBCode(bbcodeInput.value);
+    textPreview.innerHTML = parseText(textInput.value);
 
-    bbcodeInput.addEventListener('input', () => {
+    textInput.addEventListener('input', () => {
         errorMessageElement.textContent = "";
-        bbcodePreview.innerHTML = parseBBCode(bbcodeInput.value);
+        textPreview.innerHTML = parseText(textInput.value);
     });
 
     toolbarButtons.forEach(button => {
@@ -50,30 +50,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if (selectedValue == "default") {
                 document.body.style.backgroundColor = "#8a2929";
             }
-            if (selectedValue == "orange") {
-                document.body.style.backgroundColor="#c44000";
-            }
             if (selectedValue == "book") {
-                document.body.style.backgroundImage= "url(https://github.com/Aikakakah/Aikakakah.github.io/blob/main/PageBackgrounds/book.png?raw=true)";
+                textInput.style.backgroundColor = "#d2cccc";
+                textPreview.style.backgroundColor = "#d2cccc";
             }
             if (selectedValue == "paper") {
-                document.body.style.backgroundColor="#c44000";
+                textInput.style.backgroundColor = "#ebebdb";
+                textPreview.style.backgroundColor = "#ebebdb";
             }
             if (selectedValue == "office-paper") {
-                document.body.style.backgroundImage= "url(https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Iglesia_de_Nuestra_Se%C3%B1ora_de_La_Blanca%2C_Cardej%C3%B3n%2C_Espa%C3%B1a%2C_2012-09-01%2C_DD_02.JPG/640px-Iglesia_de_Nuestra_Se%C3%B1ora_de_La_Blanca%2C_Cardej%C3%B3n%2C_Espa%C3%B1a%2C_2012-09-01%2C_DD_02.JPG)";
-                document.body.style.backgroundColor="#13c0eb";
-            }
-            if (selectedValue == "captains-thoughts") {
-                document.body.style.backgroundColor="#c44000";
-            }
-            if (selectedValue == "cargo-invoice") {
-                document.body.style.backgroundColor="#c44000";
-            }
-            if (selectedValue == "cargo-bounty") {
-                document.body.style.backgroundColor = "#8a2929";
-            }
-            if (selectedValue == "character-sheet") {
-                document.body.style.backgroundColor="#c44000";
+                textInput.style.backgroundColor = "#ffffff";
+                textPreview.style.backgroundColor = "#ffffff";
             }
         }
 
@@ -82,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const startTag = `[${tag}]`;
         let strippedTag = tag.replace(/[^\a-zA-Z]/g, '');
         const endTag = `[/${strippedTag}]`;
-        const { selectionStart, selectionEnd, value } = bbcodeInput;
+        const { selectionStart, selectionEnd, value } = textInput;
         const selectedText = value.substring(selectionStart, selectionEnd);
 
         // Set caret position to directly after = sign if there is one, set to inside the tags otherwise
@@ -94,9 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         const newText = startTag + selectedText + endTag;
 
-        bbcodeInput.setRangeText(newText, selectionStart, selectionEnd, 'end');
-        bbcodeInput.focus();
-        bbcodeInput.setSelectionRange(caretPosition, caretPosition);
+        textInput.setRangeText(newText, selectionStart, selectionEnd, 'end');
+        textInput.focus();
+        textInput.setSelectionRange(caretPosition, caretPosition);
     }
 });
 
@@ -105,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
  * @param {string} text
  * @returns {string}
  */
-function parseBBCode(text) {
+function parseText(text) {
     let parsedText = text;
 
     // Newlines

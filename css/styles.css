@@ -30,7 +30,7 @@ h1 {
     gap: 20px;
 }
 
-#bbcode-input, #bbcode-preview {
+#text-input, #text-preview {
     width: 50%;
     padding: 20px;
     border: 1px solid #ccc;
@@ -42,19 +42,19 @@ h1 {
 }
 /*#d8cccc #5d5a56*/
 
-#bbcode-input {
+#text-input {
     font-family: monospace;
     resize: vertical;
     color: #191919;/*Color when typing*/
 }
 /*#5d5a56*/
 
-#bbcode-preview {
+#text-preview {
     max-width: 1000px;
     border: 2px solid #ddd;
 }
 
-#bbcode-preview:empty::before {
+#text-preview:empty::before {
     content: '... and it will update in real-time here!';
     font-size: 14px;
     color: grey;/*Color of initial text*/
