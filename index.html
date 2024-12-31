@@ -12,28 +12,40 @@
 <body>
 <div class="container">
     <h1>Space Station 14 Text Editor</h1>
-    <div id="error-message" style="color: red; font-weight: bold; text-align: center; padding-bottom: 20px;"></div>
+    <div id="error-message" style="color: red; font-weight: bold; text-align: center; padding-bottom: 10px;"></div>
     <div class="toolbar">
         <button data-tag="bold"><strong><i class="fa-solid fa-bold"></i></strong></button>
         <button data-tag="italic"><em><i class="fa-solid fa-italic"></i></em></button>
         <button data-tag="bolditalic"><b><em><i class="fa-solid fa-bold"></i><i class="fa-solid fa-italic"></i></em></b></button>
         <button data-tag="color="><i class="fa-solid fa-palette"></i></button>
         <button data-tag="bullet="><i class="fa-solid fa-list"></i></button>
-        <br>
-        <label class="header-select" data-orig-title="Header Size">
+        <label class="header-select" data-orig-title="Headers">
             <span>Header Size</span>
             <i class="fa-solid fa-chevron-down"></i>
-            <select id="header-select-select" onchange="changeHeaderLevel()">
+            <select id="header-select-select" onchange="changeHeaderSize()">
                 <option hidden>Hidden option</option>
-                <option value="1">Small</option>
+                <option value="1">Large</option>
                 <option value="2">Normal</option>
-                <option value="3">Large</option>
+                <option value="3">Small</option>
+            </select>
+        </label>
+
+        <label class="background-select" data-orig-title="Backgrounds">
+            <span>Background Color</span>
+            <i class="fa-solid fa-chevron-down"></i>
+            <select id="background-select-select" onchange="changeBackgroundColor()">
+                <option hidden>Hidden option</option>
+                <option value="default">Default</option>
+                <option value="paper">Paper</option>
+                <option value="book">Book</option>
+                <option value="office-paper">Office Paper</option>
             </select>
         </label>
     </div>
+
     <div class="editor-container">
-        <textarea id="bbcode-input" placeholder="Enter formatted text here..."></textarea>
-        <div id="bbcode-preview"></div>
+        <textarea id="text-input" placeholder="Enter formatted text here..."></textarea>
+        <div id="text-preview"></div>
     </div>
 </div>
 

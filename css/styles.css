@@ -1,4 +1,4 @@
-/* Reset some default styles */
+/* #191919 is the default text color in SS14 */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,10 +7,11 @@
 
 body {
     font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
-    background-color: #eaedde;
+    background-color: #8a2929;/*Main color of the page*/
     padding: 50px;
-    color: #5d5a56;
+    color: #e68338;/*"Header Size" text color*/
 }
+/*#eaedde #5d5a56*/
 
 .container {
     max-width: 1920px;
@@ -20,54 +21,59 @@ body {
 h1 {
     text-align: center;
     margin-bottom: 30px;
-    color: #5d5a56;
+    color: #ede319;/*Color of title*/
 }
+/*#5d5a56*/
 
 .editor-container {
     display: flex;
     gap: 20px;
 }
 
-#bbcode-input, #bbcode-preview {
+#text-input, #text-preview {
     width: 50%;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: #d8cccc;
+    background-color: #d8cccc;/*Text field colors*/
     overflow-y: auto;
-    color: #5d5a56;
+    color: #191919;/*Preview field text color*/
     font-size: 14px;
 }
+/*#d8cccc #5d5a56*/
 
-#bbcode-input {
+#text-input {
     font-family: monospace;
     resize: vertical;
-    color: #5d5a56;
+    color: #191919;/*Color when typing*/
 }
+/*#5d5a56*/
 
-#bbcode-preview {
+#text-preview {
     max-width: 1000px;
-    border: 1px solid #ddd;
+    border: 2px solid #ddd;
 }
 
-#bbcode-preview:empty::before {
+#text-preview:empty::before {
     content: '... and it will update in real-time here!';
     font-size: 14px;
-    color: grey;
+    color: grey;/*Color of initial text*/
     font-family: monospace;
 }
 
 pre {
-    background-color: #5d5a56;
+    background-color: #13c0eb;
     padding: 10px;
     overflow-x: auto;
     border-radius: 4px;
 }
+/*#5d5a56*/
 
 a {
-    color: #d9a6bd;
+    color: #4314dd;/*Source code?*/
     text-decoration: none;
 }
+/*#d9a6bd*/
 
 a:hover {
     text-decoration: underline;
@@ -78,55 +84,8 @@ img {
     height: auto;
 }
 
-.spoiler {
-    background-color: #000;
-    color: #000;
-    cursor: pointer;
-}
-
-.spoiler:hover {
-    color: #fff;
-}
-
-blockquote {
-    border-left: 4px solid #ccc;
-    margin: 10px 0;
-    padding: 10px 20px;
-    background-color: #5d5a56;
-    font-style: italic;
-}
-
-.box {
-    color: #d9a6bd;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.box:hover {
-    text-decoration: underline;
-}
-
-.arrow {
-    margin-right: 5px;
-    display: inline-block;
-    color: white;
-    width: 20px;
-}
-
-.box-content {
-    padding-top: 10px;
-    display: none;
-}
-
-.notice {
-    background-color: #472121;
-    padding: 19px;
-    border-radius: 4px;
-    border: 2px solid #705c65;
-}
-
 footer {
-    color: #fff;
+    color: #09ccf3;/*#fff*/
     font-size: 12px;
     padding-top: 20px;
     display: block;
@@ -135,7 +94,7 @@ footer {
 
 .toolbar {
     margin-bottom: 10px;
-    width: 50%;
+    width: 100%;
 }
 
 .toolbar button {
@@ -154,36 +113,69 @@ footer {
     filter: drop-shadow(0 0 0.5rem black);
 }
 
-.font-size select{
-    background-color: #54454d;
-    border-radius: 90px;
-    border: 0px solid #000;
-    padding: 5px 10px;
-    color: #fff;
-}
-
-.size-select {
-    background-color: #54454d;
+.header-select {
+    background-color: #472121;
     color: #fff;
     font-size: 13px;
     padding: 5px 10px;
-    margin: 2px;
+    margin: 1px;
     border-radius: 90px;
     position: relative;
     box-shadow: 0 1px 3px rgba(0,0,0,.25);
 }
 
-.size-select span {
+.header-select:hover {
+    background-color: #d194b3;
+    filter: drop-shadow(0 0 0.5rem black);
+}
+
+.header-select span {
     margin-right: 10px;
 }
 
-.size-select select {
+.header-select select {
     position: absolute;
+    background-color: #472121;
+    color: #fff;
+    border-radius: 90px;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     opacity: 0;
     cursor: pointer;
-    color: initial;
+}
+
+
+.background-select {
+    background-color: #472121;
+    color: #fff;
+    font-size: 13px;
+    padding: 5px 10px;
+    margin: 1px;
+    border-radius: 90px;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0,0,0,.25);
+}
+
+.background-select:hover {
+    background-color: #d194b3;
+    filter: drop-shadow(0 0 0.5rem black);
+}
+
+.background-select span {
+    margin-right: 10px;
+}
+
+.background-select select {
+    position: absolute;
+    background-color: #472121;
+    color: #fff;
+    border-radius: 90px;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
 }

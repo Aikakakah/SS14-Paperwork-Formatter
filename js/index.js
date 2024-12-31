@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const bbcodeInput = document.getElementById('bbcode-input');
-    const bbcodePreview = document.getElementById('bbcode-preview');
+    const textInput = document.getElementById('text-input');
+    const textPreview = document.getElementById('text-preview');
     const errorMessageElement = document.getElementById('error-message');
     const toolbarButtons = document.querySelectorAll('.toolbar button');
-    bbcodePreview.innerHTML = parseBBCode(bbcodeInput.value);
+    textPreview.innerHTML = parseText(textInput.value);
 
-    bbcodeInput.addEventListener('input', () => {
+    textInput.addEventListener('input', () => {
         errorMessageElement.textContent = "";
-        bbcodePreview.innerHTML = parseBBCode(bbcodeInput.value);
+        textPreview.innerHTML = parseText(textInput.value);
     });
 
     toolbarButtons.forEach(button => {
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    window.changeHeaderLevel = function() {
+    window.changeHeaderSize = function() {
     const selectElement = document.getElementById('header-select-select');
     const selectedValue = selectElement.value;
 
@@ -43,12 +43,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    window.changeBackgroundColor = function() {
+        const selectElement = document.getElementById('background-select-select');
+        const selectedValue = selectElement.value;
+    
+            if (selectedValue == "default") {
+                document.body.style.backgroundColor = "#8a2929";
+            }
+            if (selectedValue == "book") {
+                textInput.style.backgroundColor = "#d2cccc";
+                textPreview.style.backgroundColor = "#d2cccc";
+            }
+            if (selectedValue == "paper") {
+                textInput.style.backgroundColor = "#ebebdb";
+                textPreview.style.backgroundColor = "#ebebdb";
+            }
+            if (selectedValue == "office-paper") {
+                textInput.style.backgroundColor = "#ffffff";
+                textPreview.style.backgroundColor = "#ffffff";
+            }
+        }
+
     function insertTag(tag) {
         console.log(tag);
         const startTag = `[${tag}]`;
         let strippedTag = tag.replace(/[^\a-zA-Z]/g, '');
         const endTag = `[/${strippedTag}]`;
-        const { selectionStart, selectionEnd, value } = bbcodeInput;
+        const { selectionStart, selectionEnd, value } = textInput;
         const selectedText = value.substring(selectionStart, selectionEnd);
 
         // Set caret position to directly after = sign if there is one, set to inside the tags otherwise
@@ -60,9 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         const newText = startTag + selectedText + endTag;
 
-        bbcodeInput.setRangeText(newText, selectionStart, selectionEnd, 'end');
-        bbcodeInput.focus();
-        bbcodeInput.setSelectionRange(caretPosition, caretPosition);
+        textInput.setRangeText(newText, selectionStart, selectionEnd, 'end');
+        textInput.focus();
+        textInput.setSelectionRange(caretPosition, caretPosition);
     }
 });
 
@@ -71,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
  * @param {string} text
  * @returns {string}
  */
-function parseBBCode(text) {
+function parseText(text) {
     let parsedText = text;
 
     // Newlines
