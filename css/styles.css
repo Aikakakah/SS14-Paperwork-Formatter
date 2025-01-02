@@ -100,77 +100,71 @@ footer {
 }
 
 .toolbar {
-    margin-bottom: 10px;
-    width: 100%;
-    display: flex; /* Use flexbox for the toolbar */
-    flex-wrap: wrap; /* Allow buttons to wrap if needed */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
 }
 
-.toolbar button {
+.toolbar button, .toolbar .color-picker-button, .toolbar .header-select, .toolbar .background-select {
     background-color: #472121;
     color: #fff;
-    border: 0px solid #000;
+    border: 0;
     padding: 5px 10px;
     cursor: pointer;
     border-radius: 90px;
     font-size: 13px;
     text-shadow: #000 0px 0 5px;
+    height: 26px;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.toolbar button:hover {
+.toolbar button:hover, .toolbar .color-picker-button:hover, .toolbar .header-select:hover, .toolbar .background-select:hover {
     background-color: #d194b3;
     filter: drop-shadow(0 0 0.5rem black);
 }
 
-.input-bar {
-    display: table;
-    width: 50%;
-    background-color: #472121;
-    color: #fff;
-    font-size: 13px;
-    padding: 5px 5px;
-    margin: 1px;
-    border-radius: 90px;
+.toolbar .color-picker-button {
+    padding: 0 5px; /* Add some horizontal padding for spacing */
+    width: auto; /* Let width adjust to content */
     position: relative;
-    box-shadow: 0 1px 3px rgba(0,0,0,.25);
-}
-.input-bar:hover {
-    background-color: #d194b3;
-    filter: drop-shadow(0 0 0.5rem black);
+    overflow: hidden;
+    display: inline-flex; /* Ensure items align horizontally */
+    align-items: center;
 }
 
-.input-bar-item {
-    display: table-cell;
-    /* background-color: #09ccf3; */
-    
+.toolbar .color-picker-button .color-preview {
+    width: 12px; /* Adjust size as needed */
+    height: 12px;
+    border-radius: 50%; /* Make it a circle */
+    background-color: #ff8888; /* Initial color */
+    margin-left: 5px; /* Add spacing between icon and circle */
+    border: 1px solid #000;
 }
-.input-group {
+
+.toolbar .color-picker-button .cp_wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    overflow: hidden;
     display: flex;
-    /* align-items: center; Align items vertically */
-    /* gap: 1px; Add some space between the button and color picker */
+    align-items: center;
+    justify-content: center;
 }
-input[type='color'] {
-  padding: 0;
-  width: 150%;
-  height: 150%;
-  margin: -25%;
+
+.toolbar .color-picker-button input[type="color"] {
+    width: 150%;
+    height: 150%;
+    margin: -25%;
+    opacity: 0;
+    cursor: pointer;
 }
-.cp_wrapper {
-  overflow: hidden;
-  width: 2em;
-  height: 2em;
-  /* optional formatting below here padding: 5px 10px; */
-  background-color: #472121;
-  color: #fff;
-  cursor: pointer;
-  border-radius: 90px;
-  border: 1px solid #472121;
-  margin: 0em;
-}
-/* .cp_wrapper:hover {
-    border: 5px solid #d194b3;
-    filter: drop-shadow(0 0 0.5rem black);
-} */
 
 .header-select {
     background-color: #472121;
