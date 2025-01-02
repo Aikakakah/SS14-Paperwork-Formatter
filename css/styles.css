@@ -14,8 +14,9 @@ body {
 /*#eaedde #5d5a56*/
 
 .container {
-    max-width: 1920px;
+    max-width: 1200px; /* Set max container width */
     margin: 0 auto;
+    padding: 0 16px; /* Match margins */
 }
 
 h1 {
@@ -28,17 +29,22 @@ h1 {
 .editor-container {
     display: flex;
     gap: 20px;
+    max-width: calc(100% - 32px); /* Constrain within page margins */
+    margin: 0 auto; /* Center within container */
+    padding: 0 16px; /* Optional: Add padding to align with margins */
 }
 
 #text-input, #text-preview {
-    width: 50%;
+    flex: 1; /* Allow equal space for both */
+    width: 510px
+    max-width: 50%; /* Ensure they don't exceed half the container */
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #d8cccc;/*Text field colors*/
     overflow-y: auto;
     color: #191919;/*Preview field text color*/
-    font-size: 14px;
+    font-size: 12px;/*Default*/
 }
 /*#d8cccc #5d5a56*/
 
@@ -50,8 +56,9 @@ h1 {
 /*#5d5a56*/
 
 #text-preview {
-    max-width: 1000px;
+    max-width: calc(50% - 20px); /* Account for the gap between items */
     border: 2px solid #ddd;
+    /* line-height: 1.2; */
 }
 
 #text-preview:empty::before {
@@ -95,6 +102,8 @@ footer {
 .toolbar {
     margin-bottom: 10px;
     width: 100%;
+    display: flex; /* Use flexbox for the toolbar */
+    flex-wrap: wrap; /* Allow buttons to wrap if needed */
 }
 
 .toolbar button {
@@ -112,6 +121,56 @@ footer {
     background-color: #d194b3;
     filter: drop-shadow(0 0 0.5rem black);
 }
+
+.input-bar {
+    display: table;
+    width: 50%;
+    background-color: #472121;
+    color: #fff;
+    font-size: 13px;
+    padding: 5px 5px;
+    margin: 1px;
+    border-radius: 90px;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0,0,0,.25);
+}
+.input-bar:hover {
+    background-color: #d194b3;
+    filter: drop-shadow(0 0 0.5rem black);
+}
+
+.input-bar-item {
+    display: table-cell;
+    /* background-color: #09ccf3; */
+    
+}
+.input-group {
+    display: flex;
+    /* align-items: center; Align items vertically */
+    /* gap: 1px; Add some space between the button and color picker */
+}
+input[type='color'] {
+  padding: 0;
+  width: 150%;
+  height: 150%;
+  margin: -25%;
+}
+.cp_wrapper {
+  overflow: hidden;
+  width: 2em;
+  height: 2em;
+  /* optional formatting below here padding: 5px 10px; */
+  background-color: #472121;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 90px;
+  border: 1px solid #472121;
+  margin: 0em;
+}
+/* .cp_wrapper:hover {
+    border: 5px solid #d194b3;
+    filter: drop-shadow(0 0 0.5rem black);
+} */
 
 .header-select {
     background-color: #472121;
