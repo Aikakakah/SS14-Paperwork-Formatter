@@ -43,16 +43,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    window.changeBackgroundColor = function() {
+      window.changeBackgroundColor = function() {
         const selectElement = document.getElementById('background-select-select');
         const selectedValue = selectElement.value;
     
             if (selectedValue == "default") {
                 document.body.style.backgroundColor = "#8a2929";
+                //textInput.style.backgroundImage = "url(https://github.com/DeltaV-Station/Delta-v/blob/44413b0f7209d229e03a91ec6bf37f3260e1a467/Resources/Textures/Interface/Paper/paper_background_book.svg.96dpi.png?raw=true)";
+                //textInput.style.backgroundRepeat = "no-repeat";
+                //textInput.style.backgroundSize = "100% 50%";
+                //textPreview.style.background= "url(https://github.com/DeltaV-Station/Delta-v/blob/44413b0f7209d229e03a91ec6bf37f3260e1a467/Resources/Textures/Interface/Paper/paper_background_book.svg.96dpi.png?raw=true) no-repeat";
             }
             if (selectedValue == "book") {
-                textInput.style.backgroundColor = "#d2cccc";
-                textPreview.style.backgroundColor = "#d2cccc";
+                 textInput.style.backgroundColor = "#d2cccc";
+                 textPreview.style.backgroundColor = "#d2cccc";
+                //textInput.style.background= "url(https://github.com/DeltaV-Station/Delta-v/blob/44413b0f7209d229e03a91ec6bf37f3260e1a467/Resources/Textures/Interface/Paper/paper_background_book.svg.96dpi.png?raw=true) no-repeat";
+                //textPreview.style.background= "url(https://github.com/DeltaV-Station/Delta-v/blob/44413b0f7209d229e03a91ec6bf37f3260e1a467/Resources/Textures/Interface/Paper/paper_background_book.svg.96dpi.png?raw=true)";
             }
             if (selectedValue == "paper") {
                 textInput.style.backgroundColor = "#ebebdb";
@@ -61,6 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (selectedValue == "office-paper") {
                 textInput.style.backgroundColor = "#ffffff";
                 textPreview.style.backgroundColor = "#ffffff";
+                textInput.style.backgroundImage= "url(https://github.com/DeltaV-Station/Delta-v/blob/44413b0f7209d229e03a91ec6bf37f3260e1a467/Resources/Textures/Interface/Paper/paper_content_lined.svg.96dpi.png?raw=true)";
+                textPreview.style.backgroundImage= "url(https://github.com/DeltaV-Station/Delta-v/blob/44413b0f7209d229e03a91ec6bf37f3260e1a467/Resources/Textures/Interface/Paper/paper_content_lined.svg.96dpi.png?raw=true)";
             }
         }
 
@@ -71,19 +79,32 @@ document.addEventListener('DOMContentLoaded', () => {
         const endTag = `[/${strippedTag}]`;
         const { selectionStart, selectionEnd, value } = textInput;
         const selectedText = value.substring(selectionStart, selectionEnd);
+        
+    
+        if (tag === 'bullet') {
+            const newText = startTag + selectedText;
+            textInput.setRangeText(newText, selectionStart, selectionEnd, 'end');
+        }
+        else {
+            const newText = startTag + selectedText + endTag;
+            textInput.setRangeText(newText, selectionStart, selectionEnd, 'end');
+        }
 
         // Set caret position to directly after = sign if there is one, set to inside the tags otherwise
         let caretPosition;
-        if (tag.length === strippedTag.length + 1) {
-            caretPosition = selectionStart + startTag.length - 1;
+        // Determine the new caret position
+        const equalsIndex = startTag.indexOf('=');
+        if (equalsIndex !== -1) {
+            // Place the caret right after the '=' sign
+            caretPosition = selectionStart + equalsIndex + 1;
         } else {
-            caretPosition = selectionStart + startTag.length;
+            // Place the caret after the closing tag
+            caretPosition = selectionStart + startTag.length + selectedText.length + endTag.length;
         }
-        const newText = startTag + selectedText + endTag;
-
-        textInput.setRangeText(newText, selectionStart, selectionEnd, 'end');
+        // Update the input field and set focus
         textInput.focus();
         textInput.setSelectionRange(caretPosition, caretPosition);
+        textPreview.innerHTML = parseText(textInput.value);
     }
 });
 
@@ -109,25 +130,62 @@ function parseText(text) {
     parsedText = parsedText.replace(/\[bolditalic](.*?)\[\/bolditalic]/gis, '<b><em>$1</em></b>');
 
     // Headers
-    parsedText = parsedText.replace(/\[head=1](.*?)\[\/head]/gis, '<span style="font-size:2em;font-weight:bold">$1</span>');
-    parsedText = parsedText.replace(/\[head=2](.*?)\[\/head]/gis, '<span style="font-size:1.5em;font-weight:bold">$1</span>');
-    parsedText = parsedText.replace(/\[head=3](.*?)\[\/head]/gis, '<span style="font-size:1.17em;font-weight:bold">$1</span>');
-    
+    parsedText = parsedText.replace(/\[head=1](.*?)\[\/head]/gis, '<span style="font-size:2em;font-weight:bold;line-height:.5">$1</span>');
+    parsedText = parsedText.replace(/\[head=2](.*?)\[\/head]/gis, '<span style="font-size:1.5em;font-weight:bold;line-height:.5">$1</span>');
+    parsedText = parsedText.replace(/\[head=3](.*?)\[\/head]/gis, '<span style="font-size:1.17em;font-weight:bold;line-height:.5">$1</span>');
+     
     // Size
     parsedText = parsedText.replace(/\[size=(.*?)](.*?)\[\/size]/gis, function(match, p1, p2) {
         return '<span style="font-size:' + p1 + '%;">' + p2 + '</span>';
     });
 
     // Bullet
-    parsedText = parsedText.replace(/\[\/bullet](.*?)<br>/gis, '• $1');
-
-    // Color
-    parsedText = parsedText.replace(/\[color=(.*?)](.*?)\[\/color]/gis, '<span style="color:$1;">$2</span>');
+    parsedText = parsedText.replace(/\[bullet](.*?)/gis, '• $1');
 
     // Font size
     parsedText = parsedText.replace(/\[size=(.*?)](.*?)\[\/size]/gis, function(match, p1, p2) {
         return '<span style="font-size:' + p1 + '%;">' + p2 + '</span>';
     });
+
+    // Color
+    parsedText = parseColors(parsedText);
+
+    return parsedText;
+}
+
+function parseColors(text) {
+    let parsedText = "";
+    const colorRegex = /\[color=(.*?)\]|\[\/color\]/gi; // Matches opening and closing tags
+    const colorStack = [];
+
+    let match;
+    let lastIndex = 0;
+
+    while ((match = colorRegex.exec(text))) {
+        const matchText = match[0];
+        const color = match[1];
+
+        // Add the text before the tag to the parsed text
+        parsedText += text.substring(lastIndex, match.index);
+        lastIndex = match.index + matchText.length;
+
+        if (color) { // Opening tag
+            colorStack.push(color);
+            parsedText += `<span style="color:${color}">`;
+        } else if (colorStack.length > 0) { // Closing tag (only if stack is not empty)
+            parsedText += "</span>";
+            colorStack.pop();
+        }
+    }
+
+    // Add any remaining text after the last tag
+    parsedText += text.substring(lastIndex);
+
+    // Close any remaining open spans (for unclosed tags)
+    while (colorStack.length > 0) {
+        parsedText += "</span>";
+        colorStack.pop();
+    }
 
     return parsedText;
 }
