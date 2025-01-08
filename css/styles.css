@@ -36,7 +36,7 @@ h1 {
 
 #text-input, #text-preview {
     flex: 1; /* Allow equal space for both */
-    width: 510px
+    width: 390px;
     max-width: 50%; /* Ensure they don't exceed half the container */
     padding: 20px;
     border: 1px solid #ccc;
@@ -56,7 +56,8 @@ h1 {
 /*#5d5a56*/
 
 #text-preview {
-    max-width: calc(50% - 20px); /* Account for the gap between items */
+    max-width: 390px;
+    /* max-width: calc(50% - 20px); Account for the gap between items */
     border: 2px solid #ddd;
     /* line-height: 1.2; */
 }

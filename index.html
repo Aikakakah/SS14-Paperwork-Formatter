@@ -19,13 +19,18 @@
         <button data-tag="bolditalic"><b><em><i class="fa-solid fa-bold"></i><i class="fa-solid fa-italic"></i></em></b></button>
         <button data-tag="bullet"><i class="fa-solid fa-list"></i></button>
         
+        <div class="colorpicker">
         <button class="color-picker-button" data-tag="color=">
             <i class="fa-solid fa-palette"></i>
+        </button>
+        <button>
             <div class="color-preview"></div>
             <div class="cp_wrapper">
                 <input type="color" name="cp_1" value="#ff8888">
-            </div>
-        </button>
+            </div></button>
+        </div>
+        
+        
         <label class="header-select" data-orig-title="Headers">
             <span>Header Size</span>
             <i class="fa-solid fa-chevron-down"></i>
@@ -56,17 +61,7 @@
     </div>
 </div>
 
-  <script>
-    const colorPicker = document.querySelector('.toolbar input[type="color"]');
-    const colorPreview = document.querySelector('.toolbar .color-preview');
-    const textField = document.getElementById('text-input'); // Get the text field
 
-    colorPicker.addEventListener('input', (event) => {
-      const chosenColor = event.target.value; // Get the hex code of the chosen color
-      colorPreview.style.backgroundColor = chosenColor; // Update the preview circle
-      textField.value += `${chosenColor}`; // Update the text field with hex code and formatting
-    });
-  </script>
 <script src="js/index.js"></script>
 </body>
 
