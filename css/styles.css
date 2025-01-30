@@ -7,11 +7,10 @@
 
 body {
     font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
-    background-color: #8a2929;/*Main color of the page*/
+    background-color: #8a2929; /*Main color of the page*/
     padding: 50px;
-    color: #e68338;/*"Header Size" text color*/
+    color: #e68338; /*"Header Size" text color*/
 }
-/*#eaedde #5d5a56*/
 
 .container {
     max-width: 1200px; /* Set max container width */
@@ -22,9 +21,8 @@ body {
 h1 {
     text-align: center;
     margin-bottom: 30px;
-    color: #ede319;/*Color of title*/
+    color: #ede319; /*Color of title*/
 }
-/*#5d5a56*/
 
 .editor-container {
     display: flex;
@@ -34,38 +32,35 @@ h1 {
     padding: 0 16px; /* Optional: Add padding to align with margins */
 }
 
-#text-input, #text-preview {
+#text-input,
+#text-preview {
     flex: 1; /* Allow equal space for both */
     width: 390px;
     max-width: 50%; /* Ensure they don't exceed half the container */
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: #d8cccc;/*Text field colors*/
+    background-color: #d8cccc; /*Text field colors*/
     overflow-y: auto;
-    color: #191919;/*Preview field text color*/
-    font-size: 12px;/*Default*/
+    color: #191919; /*Preview field text color*/
+    font-size: 12px; /*Default*/
 }
-/*#d8cccc #5d5a56*/
 
 #text-input {
     font-family: monospace;
     resize: vertical;
-    color: #191919;/*Color when typing*/
+    color: #191919; /*Color when typing*/
 }
-/*#5d5a56*/
 
 #text-preview {
     max-width: 390px;
-    /* max-width: calc(50% - 20px); Account for the gap between items */
     border: 2px solid #ddd;
-    /* line-height: 1.2; */
 }
 
 #text-preview:empty::before {
     content: '... and it will update in real-time here!';
     font-size: 14px;
-    color: grey;/*Color of initial text*/
+    color: grey; /*Color of initial text*/
     font-family: monospace;
 }
 
@@ -75,13 +70,11 @@ pre {
     overflow-x: auto;
     border-radius: 4px;
 }
-/*#5d5a56*/
 
 a {
-    color: #4314dd;/*Source code?*/
+    color: #4314dd; /*Source code?*/
     text-decoration: none;
 }
-/*#d9a6bd*/
 
 a:hover {
     text-decoration: underline;
@@ -93,7 +86,7 @@ img {
 }
 
 footer {
-    color: #09ccf3;/*#fff*/
+    color: #09ccf3;
     font-size: 12px;
     padding-top: 20px;
     display: block;
@@ -107,7 +100,10 @@ footer {
     gap: 5px;
 }
 
-.toolbar button, .toolbar .color-picker-button, .toolbar .header-select, .toolbar .background-select {
+.toolbar button,
+.toolbar .color-picker-button,
+.toolbar .header-select,
+.toolbar .background-select {
     background-color: #472121;
     color: #fff;
     border: 0;
@@ -123,51 +119,123 @@ footer {
     justify-content: center;
 }
 
-.toolbar button:hover, .toolbar .color-picker-button:hover, .toolbar .header-select:hover, .toolbar .background-select:hover {
+.toolbar button:hover,
+.toolbar .header-select:hover,
+.toolbar .background-select:hover {
     background-color: #d194b3;
     filter: drop-shadow(0 0 0.5rem black);
 }
 
-.toolbar .color-picker-button {
-    padding: 0 5px; /* Add some horizontal padding for spacing */
-    width: auto; /* Let width adjust to content */
+
+
+.colorpicker {
+    background-color: #472121;
+    color: #fff;
+    border-radius: 90px;
+    font-size: 13px;
+    text-shadow: #000 0px 0 5px;
+    height: 26px;
+    width: 60px;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center; /* Vertically align */
+    justify-content: flex-start; /* Align items to the start (left) */
+    padding: 0px;
     position: relative;
     overflow: hidden;
-    display: inline-flex; /* Ensure items align horizontally */
-    align-items: center;
 }
 
-.toolbar .color-picker-button .color-preview {
-    width: 12px; /* Adjust size as needed */
-    height: 12px;
-    border-radius: 50%; /* Make it a circle */
-    background-color: #ff8888; /* Initial color */
-    margin-left: 5px; /* Add spacing between icon and circle */
-    border: 1px solid #000;
-}
-
-.toolbar .color-picker-button .cp_wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: inherit;
-    overflow: hidden;
+.color-picker-button {
+    background: transparent;
+    border: none;
+    padding: 5px; /* Adjust as needed */
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.toolbar .color-picker-button input[type="color"] {
-    width: 150%;
-    height: 150%;
-    margin: -25%;
-    opacity: 0;
-    cursor: pointer;
+
+.color-preview {
+    width: 0px; /* Adjust size of color preview */
+    height: 20px;
+    border-radius: 4px; /* Or 50% for a circle */
+    margin-left: 5px; /* Space between icon and preview */
+    border: 1px solid #ccc; /* Optional border */
+    box-sizing: border-box; /* Include border in width/height */
 }
 
-.header-select {
+.color-input {
+    position: absolute; /* Needed for proper placement */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Still make it transparent */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 90px;
+}
+
+.cp_wrapper {
+    position: relative; /* Needed for absolute positioning of the input */
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex; /* Use flexbox for centering */
+    align-items: center;
+    justify-content: center;
+}
+
+.colorpicker .color-input {
+    /* Remove these styles, they are now handled by .cp_wrapper */
+    /* border-color: transparent;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer; */
+    width: 50%;
+    height: 50%;
+    -webkit-appearance: none; /* For WebKit browsers */
+    -moz-appearance: none;    /* For Firefox */
+    appearance: none;         /* Standard syntax */
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 90px;
+}
+
+.colorpicker input[type="color"] {
+    appearance: none;
+    border: none;
+    padding: 0;
+    height: 20px;
+    width: 20px;
+    border-radius:90px;
+}
+  
+  input[type="color"]::-moz-color-swatch {
+    border: none;
+  }
+  
+  input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+    border-radius: 0;
+  }
+  
+  input[type="color"]::-webkit-color-swatch {
+    border: none;
+  }
+
+
+.toolbar .header-select {
     background-color: #472121;
     color: #fff;
     font-size: 13px;
@@ -175,7 +243,7 @@ footer {
     margin: 1px;
     border-radius: 90px;
     position: relative;
-    box-shadow: 0 1px 3px rgba(0,0,0,.25);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
 
 .header-select:hover {
@@ -200,8 +268,7 @@ footer {
     cursor: pointer;
 }
 
-
-.background-select {
+.toolbar .background-select {
     background-color: #472121;
     color: #fff;
     font-size: 13px;
@@ -209,7 +276,7 @@ footer {
     margin: 1px;
     border-radius: 90px;
     position: relative;
-    box-shadow: 0 1px 3px rgba(0,0,0,.25);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
 
 .background-select:hover {
