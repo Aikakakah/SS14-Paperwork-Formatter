@@ -28,8 +28,8 @@ h1 {
     display: flex;
     gap: 20px;
     max-width: calc(100% - 32px); /* Constrain within page margins */
-    margin: 0 auto; /* Center within container */
-    padding: 0 16px; /* Optional: Add padding to align with margins */
+    margin: auto; /* Center within container */
+    padding: 5px 16px; /* Optional: Add padding to align with margins */
 }
 
 #text-input,
@@ -40,7 +40,7 @@ h1 {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: #d8cccc; /*Text field colors*/
+    background-color: #ebebdb; /*Text field colors*/
     overflow-y: auto;
     color: #191919; /*Preview field text color*/
     font-size: 12px; /*Default*/

@@ -68,21 +68,19 @@ function colorUpdaterPreview(event) {
         const selectElement = document.getElementById('background-select-select');
         const selectedValue = selectElement.value;
     
-        if (selectedValue == "default") {
-            document.body.style.backgroundColor = "#8a2929";
+        if (selectedValue == "paper") {
+            textInput.style.backgroundColor = "#ebebdb";
+            textPreview.style.backgroundColor = "#ebebdb";
+            textPreview.style.backgroundImage= '';
         }
         if (selectedValue == "book") {
                 textInput.style.backgroundColor = "#d2cccc";
                 textPreview.style.backgroundColor = "#d2cccc";
-        }
-        if (selectedValue == "paper") {
-            textInput.style.backgroundColor = "#ebebdb";
-            textPreview.style.backgroundColor = "#ebebdb";
+                textPreview.style.backgroundImage= '';
         }
         if (selectedValue == "office-paper") {
             textInput.style.backgroundColor = "#ffffff";
             textPreview.style.backgroundColor = "#ffffff";
-            textInput.style.backgroundImage= "url(https://github.com/DeltaV-Station/Delta-v/blob/44413b0f7209d229e03a91ec6bf37f3260e1a467/Resources/Textures/Interface/Paper/paper_content_lined.svg.96dpi.png?raw=true)";
             textPreview.style.backgroundImage= "url(https://github.com/DeltaV-Station/Delta-v/blob/44413b0f7209d229e03a91ec6bf37f3260e1a467/Resources/Textures/Interface/Paper/paper_content_lined.svg.96dpi.png?raw=true)";
         }
     }
