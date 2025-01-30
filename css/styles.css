@@ -28,8 +28,8 @@ h1 {
     display: flex;
     gap: 20px;
     max-width: calc(100% - 32px); /* Constrain within page margins */
-    margin: auto; /* Center within container */
-    padding: 5px 16px; /* Optional: Add padding to align with margins */
+    margin: 0 auto; /* Center within container */
+    padding: 0 16px; /* Optional: Add padding to align with margins */
 }
 
 #text-input,
@@ -53,7 +53,9 @@ h1 {
 }
 
 #text-preview {
+    min-width: 390px;
     max-width: 390px;
+    white-space: pre-wrap;
     border: 2px solid #ddd;
 }
 
