@@ -173,8 +173,16 @@ function parseText(text) {
         italic: { open: '<em>', close: '</em>' },
         bolditalic: { open: '<b><em>', close: '</em></b>' },
         head: {
-            regex: /\[head=([1-3])](.*?)\[\/head]/gis,
-            replace: (match, level, content) => `<span style="font-size:${[2, 1.5, 1.17][level - 1]}em;font-weight:bold;line-height:.5">${content}</span>`
+            regex: /\[head=([0-9]+)](.*?)\[\/\s*head]/gis, // Match any number 0-9
+            replace: (match, level, content) => {
+                level = parseInt(level, 10); // Parse level as integer
+                if (isNaN(level) || level < 1) {
+                    level = 1; // Default to head=1 if invalid or less than 1
+                } else if (level > 3) {
+                    level = 3; // Cap at head=3 if greater than 3
+                }
+                return `<span style="font-size:${[2, 1.5, 1.17][level - 1]}em;font-weight:bold;line-height:.5">${content}</span>`;
+            }
         },
         size: {
             regex: /\[size=(.*?)](.*?)\[\/size]/gis,
@@ -195,7 +203,7 @@ function parseText(text) {
     const escapedNestedTags = nestedTags.map(name => name.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'));
 
     if (escapedNestedTags.length > 0) {
-        const tagRegex = new RegExp(`\\[(${escapedNestedTags.join('|')})\\]|\\[\\/(${escapedNestedTags.join('|')})\\]`, 'gi');
+        const tagRegex = new RegExp(`\\[(${escapedNestedTags.join('|')})\\]|\\[\\/\\s*(${escapedNestedTags.join('|')})\\]`, 'gi');
         const tagStack = [];
         let lastIndex = 0;
         let tempParsed = "";
@@ -272,11 +280,6 @@ function parseColors(text) {
 
     return parsedText;
 }
-
-
-
-
-
 
 function errorMessage(message) {
     const errorMessageElement = document.getElementById('error-message');
