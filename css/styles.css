@@ -53,8 +53,8 @@ h1 {
 }
 
 #text-preview {
-    min-width: 390px;
-    max-width: 390px;
+    min-width: 389px;
+    max-width: 389px;
     white-space: pre-wrap;
     border: 2px solid #ddd;
 }
