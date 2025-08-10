@@ -64,77 +64,89 @@ function colorUpdaterPreview(event) {
         }
     }
 
-    window.changeBackgroundColor = function() {
-        const selectElement = document.getElementById('background-select-select');
-        const selectedValue = selectElement.value;
-    
-        if (selectedValue == "default") {
-            document.body.style.backgroundColor = "#8a2929";
-        }
-        if (selectedValue == "book") {
-                textInput.style.backgroundColor = "#d2cccc";
-                textPreview.style.backgroundColor = "#d2cccc";
-        }
-        if (selectedValue == "paper") {
-            textInput.style.backgroundColor = "#ebebdb";
-            textPreview.style.backgroundColor = "#ebebdb";
-        }
-        if (selectedValue == "office-paper") {
-            textInput.style.backgroundColor = "#ffffff";
-            textPreview.style.backgroundColor = "#ffffff";
-            textInput.style.backgroundImage= "url(https://github.com/DeltaV-Station/Delta-v/blob/44413b0f7209d229e03a91ec6bf37f3260e1a467/Resources/Textures/Interface/Paper/paper_content_lined.svg.96dpi.png?raw=true)";
-            textPreview.style.backgroundImage= "url(https://github.com/DeltaV-Station/Delta-v/blob/44413b0f7209d229e03a91ec6bf37f3260e1a467/Resources/Textures/Interface/Paper/paper_content_lined.svg.96dpi.png?raw=true)";
-        }
-        if (selectedValue == "warrant") {
-            textInput.style.backgroundColor = "#e0bc99";
-            textPreview.style.backgroundColor = "#e0bc99";
-        }
-        if (selectedValue == "pink") {
-            textInput.style.backgroundColor = "#e670b5";
-            textPreview.style.backgroundColor = "#e670b5";
-        }
-        if (selectedValue == "red") {
-            textInput.style.backgroundColor = "#ba453f";
-            textPreview.style.backgroundColor = "#ba453f";
-        }
-        if (selectedValue == "orange") {
-            textInput.style.backgroundColor = "#ec912e";
-            textPreview.style.backgroundColor = "#ec912e";
-        }
-        if (selectedValue == "yellow") {
-            textInput.style.backgroundColor = "#ffd617";
-            textPreview.style.backgroundColor = "#ffd617";
-        }
-        if (selectedValue == "grass") {
-            textInput.style.backgroundColor = "#c7dd4b";
-            textPreview.style.backgroundColor = "#c7dd4b";
-        }
-        if (selectedValue == "green") {
-            textInput.style.backgroundColor = "#0da04d";
-            textPreview.style.backgroundColor = "#0da04d";
-        }
-        if (selectedValue == "ocean") {
-            textInput.style.backgroundColor = "#1796c8";
-            textPreview.style.backgroundColor = "#1796c8";
-        }
-        if (selectedValue == "sky") {
-            textInput.style.backgroundColor = "#49cddd";
-            textPreview.style.backgroundColor = "#49cddd";
-        }
-        if (selectedValue == "purple") {
-            textInput.style.backgroundColor = "#938bda";
-            textPreview.style.backgroundColor = "#938bda";
-        }
-        if (selectedValue == "tan") {
-            textInput.style.backgroundColor = "#cfbdaa";
-            textPreview.style.backgroundColor = "#cfbdaa";
-        }
-        if (selectedValue == "brown") {
-            textInput.style.backgroundColor = "#a47449";
-            textPreview.style.backgroundColor = "#a47449";
-        }
+ window.changeBackgroundColor = function() {
+    const selectElement = document.getElementById('background-select-select');
+    const selectedValue = selectElement.value;
 
+    // Clear background images by default for textInput and textPreview
+    textInput.style.backgroundImage = "none";
+    textPreview.style.backgroundImage = "none";
+
+    if (selectedValue == "default") {
+        document.body.style.backgroundColor = "#8a2929";
+        textInput.style.backgroundColor = "";
+        textPreview.style.backgroundColor = "";
     }
+    else if (selectedValue == "book") {
+        textInput.style.backgroundColor = "#d2cccc";
+        textPreview.style.backgroundColor = "#d2cccc";
+    }
+    else if (selectedValue == "paper") {
+        textInput.style.backgroundColor = "#ebebdb";
+        textPreview.style.backgroundColor = "#ebebdb";
+    }
+    else if (selectedValue == "office-paper") {
+        textInput.style.backgroundColor = "#ffffff";
+        textPreview.style.backgroundColor = "#ffffff";
+        const bgUrl = "url(https://github.com/DeltaV-Station/Delta-v/blob/44413b0f7209d229e03a91ec6bf37f3260e1a467/Resources/Textures/Interface/Paper/paper_content_lined.svg.96dpi.png?raw=true)";
+        textInput.style.backgroundImage = bgUrl;
+        textPreview.style.backgroundImage = bgUrl;
+    }
+    else if (selectedValue == "warrant") {
+        textInput.style.backgroundColor = "#e0bc99";
+        textPreview.style.backgroundColor = "#e0bc99";
+    }
+    else if (selectedValue == "pink") {
+        textInput.style.backgroundColor = "#e670b5";
+        textPreview.style.backgroundColor = "#e670b5";
+    }
+    else if (selectedValue == "red") {
+        textInput.style.backgroundColor = "#ba453f";
+        textPreview.style.backgroundColor = "#ba453f";
+    }
+    else if (selectedValue == "orange") {
+        textInput.style.backgroundColor = "#ec912e";
+        textPreview.style.backgroundColor = "#ec912e";
+    }
+    else if (selectedValue == "yellow") {
+        textInput.style.backgroundColor = "#ffd617";
+        textPreview.style.backgroundColor = "#ffd617";
+    }
+    else if (selectedValue == "grass") {
+        textInput.style.backgroundColor = "#c7dd4b";
+        textPreview.style.backgroundColor = "#c7dd4b";
+    }
+    else if (selectedValue == "green") {
+        textInput.style.backgroundColor = "#0da04d";
+        textPreview.style.backgroundColor = "#0da04d";
+    }
+    else if (selectedValue == "ocean") {
+        textInput.style.backgroundColor = "#1796c8";
+        textPreview.style.backgroundColor = "#1796c8";
+    }
+    else if (selectedValue == "sky") {
+        textInput.style.backgroundColor = "#49cddd";
+        textPreview.style.backgroundColor = "#49cddd";
+    }
+    else if (selectedValue == "purple") {
+        textInput.style.backgroundColor = "#938bda";
+        textPreview.style.backgroundColor = "#938bda";
+    }
+    else if (selectedValue == "tan") {
+        textInput.style.backgroundColor = "#cfbdaa";
+        textPreview.style.backgroundColor = "#cfbdaa";
+    }
+    else if (selectedValue == "brown") {
+        textInput.style.backgroundColor = "#a47449";
+        textPreview.style.backgroundColor = "#a47449";
+    }
+    else {
+        // Fallback: clear colors and backgrounds if unknown option
+        textInput.style.backgroundColor = "";
+        textPreview.style.backgroundColor = "";
+    }
+}
+
 
 
     
